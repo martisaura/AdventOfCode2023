@@ -15,7 +15,7 @@ int main()
 	maxColors.insert(pair<string, int>("blue", 14));
 
 	// PROBLEMA 2
-	map<string,int> minColors;							//El mínim sempre serà 0, en cas que no s'agafi cap d'aquell color
+	map<string,int> minColors;							//El mÃ­nim sempre serÃ  0, en cas que no s'agafi cap d'aquell color
 	minColors.insert(pair<string, int>("red", 0));
 	minColors.insert(pair<string, int>("green", 0));
 	minColors.insert(pair<string, int>("blue", 0));
@@ -34,25 +34,25 @@ int main()
 		lectura.erase(lectura.size() - 1);	// Treiem els dos punts (':') del final del numero
 		int partida = stoi(lectura);		// Guardem el numero
 		int quantitat;
-		bool validGame = true;				// Ens dirà si la partida es possible
+		bool validGame = true;				// Ens dirÃ  si la partida es possible
 		linia >> quantitat;					// Llegim quants cubs ha tret
 		linia >> lectura;					// Llegim de quin color son els cubs
-		char comp = lectura[lectura.size() - 1];	// Guardem l'ultim char per saber si queden mes cubs després	
+		char comp = lectura[lectura.size() - 1];	// Guardem l'ultim char per saber si queden mes cubs desprÃ©s	
 
-		while (validGame && (comp == ',' || comp == ';')) {		// Mirem si es l'últim cub
-			lectura.erase(lectura.size() - 1);					// Treiem el signe de puntuació
-			//validGame = ( quantitat <= maxColors.at(lectura) );	// comprovem si es una solució vàlida -> problema 1
+		while (validGame && (comp == ',' || comp == ';')) {		// Mirem si es l'Ãºltim cub
+			lectura.erase(lectura.size() - 1);					// Treiem el signe de puntuaciÃ³
+			//validGame = ( quantitat <= maxColors.at(lectura) );	// comprovem si es una soluciÃ³ vÃ lida -> problema 1
 			
-			minColors.at(lectura) = max(minColors.at(lectura), quantitat);	// Per al problema 2. Actualitzem el mínim de cubs necessaris del color al 
-																			// màxim de cubs d'aquell color que hem tret
+			minColors.at(lectura) = max(minColors.at(lectura), quantitat);	// Per al problema 2. Actualitzem el mÃ­nim de cubs necessaris del color al 
+																			// mÃ xim de cubs d'aquell color que hem tret
 			
 			linia >> quantitat >> lectura;						// Llegim la seguent parella quantitat-color
-			comp = lectura[lectura.size() - 1];					// Actualitzem l'ultim char per saber si després en quedaran més
+			comp = lectura[lectura.size() - 1];					// Actualitzem l'ultim char per saber si desprÃ©s en quedaran mÃ©s
 		}
-																			// No cal treure l'últim char de lectura degut a que l'accés al mapa només el fem
-																			// si l'últim char no es un signe de puntuació
+																			// No cal treure l'Ãºltim char de lectura degut a que l'accÃ©s al mapa nomÃ©s el fem
+																			// si l'Ãºltim char no es un signe de puntuaciÃ³
 		if (validGame) { 
-			//validGame = (quantitat <= maxColors.at(lectura));				// Comparació per l'últim cas, ja que no entrem al while -> problema 1
+			//validGame = (quantitat <= maxColors.at(lectura));				// ComparaciÃ³ per l'Ãºltim cas, ja que no entrem al while -> problema 1
 			minColors.at(lectura) = max(minColors.at(lectura), quantitat);	
 		}
 		
@@ -60,7 +60,7 @@ int main()
 		// if (validGame) suma += partida; // Al problema 1 estem sumant el id de la partida
 
 		//PROBLEMA 2
-		if (validGame) suma += ( minColors.at("red") * minColors.at("green") * minColors.at("blue") );	// En el problema 2, sumem la multiplicació del mínim
+		if (validGame) suma += ( minColors.at("red") * minColors.at("green") * minColors.at("blue") );	// En el problema 2, sumem la multiplicaciÃ³ del mÃ­nim
 																										// de cubs de cada color.
 																										// Si els colors no fossin fixos, es podria fer
 																										// 
@@ -68,11 +68,11 @@ int main()
 																										// for(pair<string,int>& val : minColors) sum *= val.second;
 																										// suma += sum;
 																										// 
-																										// (El codi està fet en un moment i potser no funciona tal com
-																										// està ara i s'hauria de canviar lleugerament)
+																										// (El codi estÃ  fet en un moment i potser no funciona tal com
+																										// estÃ  ara i s'hauria de canviar lleugerament)
 																										
 
-		//Reiniciem el mínim de cubs de cada color
+		//Reiniciem el mÃ­nim de cubs de cada color
 		minColors.at("red") = 0;
 		minColors.at("green") = 0;
 		minColors.at("blue") = 0;
