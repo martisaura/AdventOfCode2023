@@ -11,14 +11,14 @@ bool checkIfValid(const int& x, const int& y, const vector< vector<char> >& mat)
 	int matSize = mat.size();
 
 
-	for (int i = x - 1; i <= x + 1; ++i) {												// Comencem per la línia de sobre del digit que hem trobat
+	for (int i = x - 1; i <= x + 1; ++i) {												// Comencem per la lÃ­nia de sobre del digit que hem trobat
 		if (i >= 0 && i < matSize) {													// Comprovem que no estiguem fora de la matriu
 
-			for (int j = y - 1; j <= y + 1; ++j) {										// Comencem per l'esquerra del dígit que hem trobat
+			for (int j = y - 1; j <= y + 1; ++j) {										// Comencem per l'esquerra del dÃ­git que hem trobat
 
 				if (j >= 0 && j < lineSize) {											// Comprovem que no estiguem fora de la matriu
 					char actual = mat[i][j];											// Per simplicitat end guardem el char que anem a comprovar
-					if (actual != '.' && ( actual < 48 || actual > 57)) return true;	// Si el char no es un '.' ni un dígit, aleshores hem trobat un símbol
+					if (actual != '.' && ( actual < 48 || actual > 57)) return true;	// Si el char no es un '.' ni un dÃ­git, aleshores hem trobat un sÃ­mbol
 				}
 
 			}
@@ -70,12 +70,12 @@ int main()
 		for (int i = pos.first - 1; i <= pos.first + 1; ++i) {	// Mirem al voltan del simbol de dalt a baix
 			if (i >= 0 && i < mat.size()) {
 				bool sameNumber = false;
-				for (int j = pos.second - 1; j <= pos.second + 1; ++j) {	// Mirem al voltant del símbol d'esquerra a dreta
+				for (int j = pos.second - 1; j <= pos.second + 1; ++j) {	// Mirem al voltant del sÃ­mbol d'esquerra a dreta
 					if (j >= 0 && j < mat[i].size()) {
 
 						if (mat[i][j] >= 48 && mat[i][j] <= 57) {
 							if (not sameNumber) {							// Si abans no tenia cap digit ens guardem el numero
-								sameNumber = true;							// Ens guardem que ja estem mirant el número per no mirarlo multiples cops
+								sameNumber = true;							// Ens guardem que ja estem mirant el nÃºmero per no mirarlo multiples cops
 								numeros.push_back(getNumber(i, j, mat));	// Guardem el numero
 							}
 						}
@@ -92,7 +92,7 @@ int main()
 	// PROBLEMA 1 INEFICIENT
 	/*for (int i = 0; i < mat.size(); ++i) {	// Recorrem totes les files de la matriu
 		
-		bool isNumber = false;				// Aquest booleà ens dirà si els números que estem llegint son el primer o no
+		bool isNumber = false;				// Aquest booleÃ  ens dirÃ  si els nÃºmeros que estem llegint son el primer o no
 		bool isValid = false;
 		int numero = 0;
 
@@ -100,36 +100,36 @@ int main()
 
 			char actual = mat[i][j];				// Per fer menys accessos a la matriu
 
-			if (isNumber) {							// Si el char anterior era un número, entrem aquí
+			if (isNumber) {							// Si el char anterior era un nÃºmero, entrem aquÃ­
 
-				if (actual >= 48 && actual <= 57) {	// Si el char que estem mirant és un dígit, entrem aquí
+				if (actual >= 48 && actual <= 57) {	// Si el char que estem mirant Ã©s un dÃ­git, entrem aquÃ­
 
-					numero = numero * 10 + (actual - 48);				// Afegim el dígit al final del número
-					if (!isValid) isValid = checkIfValid(i, j, mat);	// Si no hem pogut comprovar que sigui vàlid, ho comprovem
+					numero = numero * 10 + (actual - 48);				// Afegim el dÃ­git al final del nÃºmero
+					if (!isValid) isValid = checkIfValid(i, j, mat);	// Si no hem pogut comprovar que sigui vÃ lid, ho comprovem
 				
 				}
 
-				else {								// Si el char actual no és un número, entrem aquí
-					if (isValid) suma += numero;	// Si es un numero que toca un símbol, el sumem
+				else {								// Si el char actual no Ã©s un nÃºmero, entrem aquÃ­
+					if (isValid) suma += numero;	// Si es un numero que toca un sÃ­mbol, el sumem
 					numero = 0;						// Reiniciem el numero
-					isNumber = false;				// Desactivem la flag que ens diu si estem mirant un número
+					isNumber = false;				// Desactivem la flag que ens diu si estem mirant un nÃºmero
 					isValid = false;
 				}
 
 			}
 
-			else {										// Si el dígit anterior no era un número, entrem aquí
+			else {										// Si el dÃ­git anterior no era un nÃºmero, entrem aquÃ­
 				
-				if (actual >= 48 && actual <= 57) {		// Comprovem si és un número
-					isNumber = true;					// Activem el flag de que hem trobat un número
+				if (actual >= 48 && actual <= 57) {		// Comprovem si Ã©s un nÃºmero
+					isNumber = true;					// Activem el flag de que hem trobat un nÃºmero
 					numero = actual - 48;				// Guardem el valor
-					isValid = checkIfValid(i, j, mat);	// Fem check de si es vàlid en el nostre problema
+					isValid = checkIfValid(i, j, mat);	// Fem check de si es vÃ lid en el nostre problema
 				}
 
 			}
 		
 		}
-		if (isValid) suma += numero;					// Si acabem la linia i tenim un número vàlid, el sumem
+		if (isValid) suma += numero;					// Si acabem la linia i tenim un nÃºmero vÃ lid, el sumem
 	}*/
 	
 	cout << suma;
